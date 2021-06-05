@@ -1,26 +1,12 @@
 from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 text = ''
 
 @app.route('/')
 def home():
-    return 'Home Page Route - nice work Andrew!!!'
-
-
-@app.route('/about')
-def about():
-    return 'About Page Route'
-
-
-@app.route('/portfolio')
-def portfolio():
-    return 'Portfolio Page Route'
-
-
-@app.route('/contact')
-def contact():
-    return 'Contact Page Route'
+    return 'Home Page Route - nice work Xoma!!!'
 
 @app.route('/api/send')
 def send():
@@ -34,9 +20,3 @@ def send():
 def receive():
     return text
 
-
-@app.route('/api')
-def api():
-    with open('data.json', mode='r') as my_file:
-        text = my_file.read()
-        return text
