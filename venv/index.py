@@ -2,7 +2,7 @@ from flask import Flask
 
 
 app = Flask(__name__)
-
+text = ''
 
 @app.route('/')
 def home():
@@ -22,6 +22,18 @@ def portfolio():
 @app.route('/contact')
 def contact():
     return 'Contact Page Route'
+
+@app.route('/api/send')
+def send():
+    message = request.args.get('text')
+    global text
+    text = message
+    return 'True'
+
+
+@app.route('/api/receive')
+def receive():
+    return text
 
 
 @app.route('/api')
